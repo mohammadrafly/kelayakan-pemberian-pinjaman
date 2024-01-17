@@ -11,7 +11,7 @@ const saveData = async () => {
 
         console.log(response.message);
         location.reload(true);
-        alert('save successful!');
+        alert(response.message);
     } catch (error) {
         console.error('Error saving Karyawan:', error.responseText);
     }
@@ -29,7 +29,7 @@ function deleteData(id, isConfirmed) {
             success: function(response) {
                 console.log(response.message);
                 location.reload(true);
-                alert('Deletion successful!');
+                alert(response.message);
             },
             error: function(error) {
                 console.error('Error deleting Karyawan:', error.responseText);

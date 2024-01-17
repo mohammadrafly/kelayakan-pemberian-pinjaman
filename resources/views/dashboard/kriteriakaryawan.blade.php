@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="w-full h-full bg-white rounded-lg shadow-lg p-10">
-    <button type="button" data-modal-target="modal-pinjaman" data-modal-toggle="modal-pinjaman" class="text-white flex bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-5 focus:outline-none ">
+    <button type="button" data-modal-target="modal-kriteria-karyawan" data-modal-toggle="modal-kriteria-karyawan" class="text-white flex bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-5 focus:outline-none ">
         <svg class="w-5 h-5 mr-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 5.757v8.486M5.757 10h8.486M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
         </svg>
@@ -17,10 +17,10 @@
                         Nama Karyawan
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        Pinjaman
+                        Kriteria
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        Bobot
+                        Nilai
                     </th>
                     <th scope="col" class="px-6 py-3">
                         
@@ -29,19 +29,19 @@
             </thead>
             <tbody>
                 @foreach ($data as $index => $dt)
-                <tr id="pinjaman-{{ $dt->id }}" class="bg-white border-b hover:bg-gray-200">
+                <tr id="karyawan-{{ $dt->id }}" class="bg-white border-b hover:bg-gray-200">
                     <th class="px-6 py-4">
                         {{ $dt->karyawan->name }}
                     </th>
                     <td class="px-6 py-4">
-                        {{ 'IDR ' . number_format($dt->pinjaman, 0, ',', '.') }}
+                        {{ $dt->kriteria->nama_kriteria }}
                     </td>
                     <td class="px-6 py-4">
-                        {{ $dt->bobot }}
+                        {{ $dt->nilai }}
                     </td>
                     <td class="px-6 py-4 text-right">
-                        <button type="button" data-modal-target="modal-pinjaman" data-modal-toggle="modal-pinjaman" class="font-medium text-sky-600 hover:underline" onclick="editData('{{ $dt->id }}')">Edit</button>
-                        <button type="button" data-modal-target="modal-pinjaman-delete" data-modal-toggle="modal-pinjaman-delete" class="font-medium text-red-600 hover:underline" onclick="setDeleteId('{{ $dt->id }}')">Delete</button>
+                        <button type="button" data-modal-target="modal-kriteria-karyawan" data-modal-toggle="modal-kriteria-karyawan" class="font-medium text-sky-600 hover:underline" onclick="editData('{{ $dt->id }}')">Edit</button>
+                        <button type="button" data-modal-target="modal-kriteria-karyawan-delete" data-modal-toggle="modal-kriteria-karyawan-delete" class="font-medium text-red-600 hover:underline" onclick="setDeleteId('{{ $dt->id }}')">Delete</button>
                     </td>
                 </tr>
                 @endforeach
@@ -50,16 +50,16 @@
     </div>    
 </div>
 
-@include('dashboard.partials.deletePinjamanModal')
+@include('dashboard.partials.deleteKriteriaKaryawanModal')
 
-<div id="modal-pinjaman" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+<div id="modal-kriteria-karyawan" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
     <div class="relative p-4 w-full max-w-2xl max-h-full">
         <div class="relative bg-white rounded-lg shadow">
             <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t ">
                 <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
                     Tambah {{ $title }}
                 </h3>
-                <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="modal-pinjaman">
+                <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="modal-kriteria-karyawan">
                     <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
                     </svg>
@@ -78,16 +78,20 @@
                     <input type="text" id="id" name="id" hidden>
                 </div>
                 <div class="mb-4">
-                    <label for="pinjaman" class="block text-sm font-medium text-gray-700">Pinjaman</label>
-                    <input type="number" id="pinjaman" name="pinjaman" class="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:border-blue-500">
+                    <label for="kriteria" class="block text-sm font-medium text-gray-700">Kriteria</label>
+                    <select class="js-example-basic-single" name="id_kriteria" id="id_kriteria">
+                        @foreach ($kriteria as $data)
+                        <option value="{{ $data->id }}">{{ $data->nama_kriteria}}</option>
+                        @endforeach
+                    </select>
                 </div>
                 <div class="mb-4">
-                    <label for="bobot" class="block text-sm font-medium text-gray-700">Bobot</label>
-                    <input type="number" id="bobot" name="bobot" class="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:border-blue-500">
+                    <label for="nilai" class="block text-sm font-medium text-gray-700">Nilai</label>
+                    <input type="text" id="nilai" name="nilai" class="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:border-blue-500">
                 </div>
                 <div class="flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b ">
                     <button type="button" onclick="saveData()" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Save</button>
-                    <button type="button" data-modal-hide="modal-pinjaman" class="ms-3 text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10">Cancel</button>
+                    <button type="button" data-modal-hide="modal-kriteria-karyawan" class="ms-3 text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10">Cancel</button>
                 </div>
             </form>
         </div>
@@ -97,6 +101,6 @@
 
 @section('script')
 
-<script src="{{ asset('assets/js/Pinjaman.js') }}"></script>
+<script src="{{ asset('assets/js/KriteriaKaryawan.js') }}"></script>
 
 @endsection

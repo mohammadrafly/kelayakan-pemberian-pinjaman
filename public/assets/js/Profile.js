@@ -10,7 +10,7 @@ const saveData = async () => {
         if (response.success) {
             console.log(response.message);
             location.reload(true);
-            alert('Save Successful!');
+            alert(response.message);
         } else {
             alert('Save failed: ' + response.message);
         }
@@ -25,7 +25,7 @@ const savePassword = async () => {
     const passwordConfirm = $('#new_password_confirm').val();
 
     if (password !== passwordConfirm) {
-        alert('Password tidak sama! Silahkan ketik ulang.');
+        alert(response.message);
         return;
     }
 
@@ -39,7 +39,7 @@ const savePassword = async () => {
         if (response.success) {
             console.log(response.message);
             location.reload(true);
-            alert('Save Successful!');
+            alert(response.message);
         } else {
             alert('Save failed: ' + response.message);
         }

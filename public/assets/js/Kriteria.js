@@ -4,16 +4,16 @@ const saveData = async () => {
     const id = $('#id').val();
     try {
         const response = await $.ajax({
-            url: DASHBOARD + `pinjaman/${id ? 'update/' : ''}` + (id ? id : ''),
+            url: DASHBOARD + `kriteria/${id ? 'update/' : ''}` + (id ? id : ''),
             type: 'POST',
             data: $('#form').serialize(),
         });
 
         console.log(response.message);
         location.reload(true);
-        alert('save successful!');
+        alert(response.message);
     } catch (error) {
-        console.error('Error saving Pinjaman:', error.responseText);
+        console.error('Error saving Kriteria:', error.responseText);
     }
 };
 
@@ -24,15 +24,15 @@ function setDeleteId(id) {
 function deleteData(id, isConfirmed) {
     if (isConfirmed) {
         $.ajax({
-            url: DASHBOARD + 'pinjaman/delete/' + id,
+            url: DASHBOARD + 'kriteria/delete/' + id,
             type: 'GET',
             success: function(response) {
                 console.log(response.message);
                 location.reload(true);
-                alert('Deletion successful!');
+                alert(response.message);
             },
             error: function(error) {
-                console.error('Error deleting Pinjaman:', error.responseText);
+                console.error('Error deleting Kriteria:', error.responseText);
             }
         });
     } else {
@@ -43,16 +43,14 @@ function deleteData(id, isConfirmed) {
 
 function editData(id) {
     $.ajax({
-        url: DASHBOARD + 'pinjaman/update/' + id,
+        url: DASHBOARD + 'kriteria/update/' + id,
         type: 'GET',
         success: function(response) {
             $('#id').val(response.data.id);
-            $('#id_karyawan').val(response.data.id_karyawan);
-            $('#pinjaman').val(response.data.pinjaman);
-            $('#bobot').val(response.data.bobot);
+            $('#nama_kriteria').val(response.data.nama_kriteria);
         },
         error: function(error) {
-            console.error('Error getting Pinjaman:', error.responseText);
+            console.error('Error getting Kriteria:', error.responseText);
         }
     });
 }

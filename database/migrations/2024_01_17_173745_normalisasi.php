@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('lama_kerja', function (Blueprint $table) {
+        Schema::create('normalisasi', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_karyawan')->constrained('karyawan');
-            $table->string('lama_kerja');
+            $table->foreignId('id_kriteria')->constrained('kriteria');
+            $table->string('nilai');
             $table->string('bobot');
             $table->timestamps();
             $table->softDeletes();
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('lama_kerja');
+        Schema::dropIfExists('normalisasi');
     }
 };

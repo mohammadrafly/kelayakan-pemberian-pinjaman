@@ -6,20 +6,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Pinjaman extends Model
+class Kriteria extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $table = 'pinjaman';
+    protected $table = 'kriteria';
 
     protected $fillable = [
-        'id_karyawan',
-        'pinjaman',
-        'bobot',
+        'nama_kriteria',
     ];
-
-    public function karyawan()
-    {
-        return $this->belongsTo(Karyawan::class, 'id_karyawan');
-    }
 }

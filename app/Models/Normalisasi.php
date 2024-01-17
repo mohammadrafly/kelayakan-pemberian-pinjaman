@@ -6,20 +6,20 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class LamaKerja extends Model
+class Normalisasi extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $table = 'lama_kerja';
+    protected $table = 'normalisasi';
 
     protected $fillable = [
-        'id_karyawan',
-        'lama_kerja',
-        'bobot',
+        'id_kriteria',
+        'nilai',
+        'bobot'
     ];
 
-    public function karyawan()
+    public function kriteria()
     {
-        return $this->belongsTo(Karyawan::class, 'id_karyawan');
+        return $this->belongsTo(Kriteria::class, 'id_kriteria');
     }
 }

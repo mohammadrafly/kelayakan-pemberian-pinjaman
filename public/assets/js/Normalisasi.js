@@ -4,16 +4,16 @@ const saveData = async () => {
     const id = $('#id').val();
     try {
         const response = await $.ajax({
-            url: DASHBOARD + `riwayatpinjaman/${id ? 'update/' : ''}` + (id ? id : ''),
+            url: DASHBOARD + `normalisasi/${id ? 'update/' : ''}` + (id ? id : ''),
             type: 'POST',
             data: $('#form').serialize(),
         });
 
         console.log(response.message);
         location.reload(true);
-        alert('save successful!');
+        alert(response.message);
     } catch (error) {
-        console.error('Error saving Riwayat Pinjaman:', error.responseText);
+        console.error('Error saving normalisasi:', error.responseText);
     }
 };
 
@@ -24,15 +24,15 @@ function setDeleteId(id) {
 function deleteData(id, isConfirmed) {
     if (isConfirmed) {
         $.ajax({
-            url: DASHBOARD + 'riwayatpinjaman/delete/' + id,
+            url: DASHBOARD + 'normalisasi/delete/' + id,
             type: 'GET',
             success: function(response) {
                 console.log(response.message);
                 location.reload(true);
-                alert('Deletion successful!');
+                alert(response.message);
             },
             error: function(error) {
-                console.error('Error deleting Riwayat Pinjaman:', error.responseText);
+                console.error('Error deleting normalisasi:', error.responseText);
             }
         });
     } else {
@@ -43,16 +43,16 @@ function deleteData(id, isConfirmed) {
 
 function editData(id) {
     $.ajax({
-        url: DASHBOARD + 'riwayatpinjaman/update/' + id,
+        url: DASHBOARD + 'normalisasi/update/' + id,
         type: 'GET',
         success: function(response) {
             $('#id').val(response.data.id);
-            $('#id_karyawan').val(response.data.id_karyawan);
-            $('#riwayat_pinjaman_sebeleumnya').val(response.data.riwayat_pinjaman_sebeleumnya);
+            $('#id_kriteria').val(response.data.id_kriteria);
+            $('#nilai').val(response.data.nilai);
             $('#bobot').val(response.data.bobot);
         },
         error: function(error) {
-            console.error('Error getting Riwayat Pinjaman:', error.responseText);
+            console.error('Error getting normalisasi:', error.responseText);
         }
     });
 }

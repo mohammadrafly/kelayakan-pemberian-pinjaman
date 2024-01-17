@@ -4,16 +4,16 @@ const saveData = async () => {
     const id = $('#id').val();
     try {
         const response = await $.ajax({
-            url: DASHBOARD + `totaltanggungan/${id ? 'update/' : ''}` + (id ? id : ''),
+            url: DASHBOARD + `kriteriakaryawan/${id ? 'update/' : ''}` + (id ? id : ''),
             type: 'POST',
             data: $('#form').serialize(),
         });
 
         console.log(response.message);
         location.reload(true);
-        alert('save successful!');
+        alert(response.message);
     } catch (error) {
-        console.error('Error saving total tanggungan:', error.responseText);
+        console.error('Error saving kriteriakaryawan:', error.responseText);
     }
 };
 
@@ -24,15 +24,15 @@ function setDeleteId(id) {
 function deleteData(id, isConfirmed) {
     if (isConfirmed) {
         $.ajax({
-            url: DASHBOARD + 'totaltanggungan/delete/' + id,
+            url: DASHBOARD + 'kriteriakaryawan/delete/' + id,
             type: 'GET',
             success: function(response) {
                 console.log(response.message);
                 location.reload(true);
-                alert('Deletion successful!');
+                alert(response.message);
             },
             error: function(error) {
-                console.error('Error deleting total tanggungan:', error.responseText);
+                console.error('Error deleting kriteriakaryawan:', error.responseText);
             }
         });
     } else {
@@ -40,18 +40,19 @@ function deleteData(id, isConfirmed) {
     }
 }
 
+
 function editData(id) {
     $.ajax({
-        url: DASHBOARD + 'totaltanggungan/update/' + id,
+        url: DASHBOARD + 'kriteriakaryawan/update/' + id,
         type: 'GET',
         success: function(response) {
             $('#id').val(response.data.id);
             $('#id_karyawan').val(response.data.id_karyawan);
-            $('#total_tanggungan').val(response.data.total_tanggungan);
-            $('#bobot').val(response.data.bobot);
+            $('#id_kriteria').val(response.data.id_kriteria);
+            $('#nilai').val(response.data.nilai);
         },
         error: function(error) {
-            console.error('Error getting total Tanggungan:', error.responseText);
+            console.error('Error getting kriteriakaryawan:', error.responseText);
         }
     });
 }
