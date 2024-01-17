@@ -15,8 +15,16 @@ function performLogout() {
     });
 }
 
-
 $(document).ready(function() {
+    $('#datatable').DataTable();
+    $('.js-example-basic-single').select2({
+        placeholder: "Pilih Karyawan",
+        allowClear: true
+    });
     $('#errorContainer').hide();
+    $('.submenu').hide();
+    $('.submenu-toggle').click(function (e) {
+        e.preventDefault();
+        $(this).next('.submenu').toggle();
+    });
 });
-

@@ -24,6 +24,51 @@
             Karyawan
         </a>
     </li>
+    <li class="p-2">
+        <a href="#submenu" class="flex items-center hover:bg-sky-700 hover:text-white p-3 rounded-lg submenu-toggle @if (Route::currentRouteName() == 'lamakerja' || Route::currentRouteName() == 'pinjaman' || Route::currentRouteName() == 'riwayatpinjaman' || Route::currentRouteName() == 'totaltanggungan') bg-sky-500 text-white @endif">
+            <svg class="w-4 h-4 mr-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 4c0 1.657-3.582 3-8 3S1 5.657 1 4m16 0c0-1.657-3.582-3-8-3S1 2.343 1 4m16 0v6M1 4v6m0 0c0 1.657 3.582 3 8 3s8-1.343 8-3M1 10v6c0 1.657 3.582 3 8 3s8-1.343 8-3v-6"/>
+            </svg>
+            Data Bobot
+            <svg class="w-3 h-3 ml-auto transition-transform duration-300 transform" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 8 14">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 13 5.7-5.326a.909.909 0 0 0 0-1.348L1 1"/>
+            </svg>
+        </a>
+        <ul class="submenu hidden p-3 bg-slate-300 rounded-lg mt-5 text-black">
+            <li class="p-2">
+                <a href="{{ route('lamakerja') }}" class="flex items-center hover:bg-sky-700 hover:text-white p-3 rounded-lg @if (Route::currentRouteName() == 'lamakerja') bg-sky-500 text-white @endif">
+                    <svg class="w-4 h-4 mr-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                        <path stroke="currentColor" stroke-linejoin="round" stroke-width="2" d="M10 6v4l3.276 3.276M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
+                    </svg>
+                    Lama Kerja
+                </a>
+            </li>
+            <li class="p-2">
+                <a href="{{ route('pinjaman') }}" class="flex items-center hover:bg-sky-700 hover:text-white p-3 rounded-lg @if (Route::currentRouteName() == 'pinjaman') bg-sky-500 text-white @endif">
+                    <svg class="w-4 h-4 mr-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 11 20">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1.75 15.363a4.954 4.954 0 0 0 2.638 1.574c2.345.572 4.653-.434 5.155-2.247.502-1.813-1.313-3.79-3.657-4.364-2.344-.574-4.16-2.551-3.658-4.364.502-1.813 2.81-2.818 5.155-2.246A4.97 4.97 0 0 1 10 5.264M6 17.097v1.82m0-17.5v2.138"/>
+                    </svg>
+                    Pinjaman
+                </a>
+            </li>
+            <li class="p-2">
+                <a href="{{ route('riwayatpinjaman') }}" class="flex items-center hover:bg-sky-700 hover:text-white p-3 rounded-lg @if (Route::currentRouteName() == 'riwayatpinjaman') bg-sky-500 text-white @endif">
+                    <svg class="w-4 h-4 mr-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 19 21">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.6 16.733c.234.268.548.456.895.534a1.4 1.4 0 0 0 1.75-.762c.172-.615-.445-1.287-1.242-1.481-.796-.194-1.41-.862-1.241-1.481a1.4 1.4 0 0 1 1.75-.763c.343.078.654.261.888.525m-1.358 4.017v.617m0-5.94v.726M1 10l5-4 4 1 7-6m0 0h-3.207M17 1v3.207M5 19v-6m-4 6v-4m17 0a5 5 0 1 1-10 0 5 5 0 0 1 10 0Z"/>
+                    </svg>
+                    Riwayat Pinjaman
+                </a>
+            </li>
+            <li class="p-2">
+                <a href="{{ route('totaltanggungan') }}" class="flex items-center hover:bg-sky-700 hover:text-white p-3 rounded-lg @if (Route::currentRouteName() == 'totaltanggungan') bg-sky-500 text-white @endif">
+                    <svg class="w-4 h-4 mr-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2h4a1 1 0 0 1 1 1v15a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1h4m6 0a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1m6 0v3H6V2M5 5h8m-8 5h8m-8 4h8"/>
+                    </svg>
+                    Total Tanggungan
+                </a>
+            </li>
+        </ul>
+    </li>
 </ul>
 
 <ul class="absolute bottom-5 left-0 w-full">
