@@ -12,6 +12,7 @@ class KriteriaController extends Controller
         if ($request->ajax()) {
             Kriteria::create([
                 'nama_kriteria' => $request->nama_kriteria,
+                'bobot_kriteria' => $request->bobot_kriteria
             ]);
 
             return response()->json([
@@ -44,7 +45,10 @@ class KriteriaController extends Controller
                 ], 200);
             }
 
-            $kriteria->update($request->only(['nama_kriteria']));
+            $kriteria->update($request->only([
+                'nama_kriteria',
+                'bobot_kriteria'
+            ]));
 
             return response()->json([
                 'success' => true,

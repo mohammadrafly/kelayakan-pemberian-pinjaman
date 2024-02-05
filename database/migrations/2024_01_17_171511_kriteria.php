@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('kriteria', function (Blueprint $table) {
             $table->id();
             $table->string('nama_kriteria');
+            $table->string('bobot_kriteria');
             $table->timestamps();
             $table->softDeletes();
         });

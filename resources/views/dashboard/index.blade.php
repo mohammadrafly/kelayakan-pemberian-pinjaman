@@ -2,7 +2,13 @@
 
 @section('content')
 
+@if(session('error'))
+    <div id="error-message" class="bg-red-500 text-white p-4 mb-4 rounded-lg">
+        {{ session('error') }}
+    </div>
+@endif
 <h1 class="text-3xl font-extralight">Welcome Back! , <span class="font-semibold">{{ Auth::user()->name }}</span></h1>
+
 <div class="flex flex-wrap pt-5">
     <a href="#" class="justify-self-stretch relative block min-w-[450px] p-6 mb-4 mr-4 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
         <div class="flex justify-between">

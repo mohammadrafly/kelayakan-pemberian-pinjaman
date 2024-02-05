@@ -6,13 +6,22 @@ use Illuminate\Http\Request;
 use App\Models\KriteriaKaryawan;
 use App\Models\Normalisasi;
 use App\Models\Karyawan;
+use App\Models\Kriteria;
 
 class SAWController extends Controller
 {
     public function index()
     {
         $karyawanData = Karyawan::all();
+        $kritirea = Kriteria::all();
 
+        $totalKriteria = Kriteria::count();
+        $totalBobotKriteria = Kriteria::sum('bobot_kriteria');
+        if ($totalKriteria === 0) {
+            return redirect('/dashboard')->with('error', 'Tidak ada kriteria yang tersedia.');
+        }
+
+        $bobotKriteria = $totalBobotKriteria / $totalKriteria; 
         $sawValues = [];
 
         foreach ($karyawanData as $karyawan) {
@@ -45,11 +54,10 @@ class SAWController extends Controller
                     $normalisation = 0;
                 }
                 
-                $saw += $normalisation * 25;
+                $saw += $normalisation * $bobotKriteria;
                 
             }
 
-            //dd($saw);
             $sawValues[] = [
                 'karyawan_name' => $karyawan->name,
                 'saw_value' => $saw,

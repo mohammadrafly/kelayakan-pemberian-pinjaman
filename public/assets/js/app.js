@@ -1,6 +1,12 @@
 const BASE_URL = 'http://127.0.0.1:8000/';
 const DASHBOARD = BASE_URL + 'dashboard/';
 
+$(document).ready(function() {
+    setTimeout(function() {
+        $('#error-message').fadeOut();
+    }, 3000);
+});
+
 function performLogout() {
     $.ajax({
         type: 'GET',
