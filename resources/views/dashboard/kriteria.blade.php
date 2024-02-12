@@ -17,7 +17,10 @@
                         Nama Kriteria
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        
+                        Bobot Kriteria
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+
                     </th>
                 </tr>
             </thead>
@@ -26,6 +29,9 @@
                 <tr id="kriteria-{{ $dt->id }}" class="bg-white border-b hover:bg-gray-200">
                     <th class="px-6 py-4">
                         {{ $dt->nama_kriteria }}
+                    </th>
+                    <th class="px-6 py-4">
+                        {{ $dt->bobot_kriteria }}
                     </th>
                     <td class="px-6 py-4 text-right">
                         <button type="button" data-modal-target="modal-kriteria" data-modal-toggle="modal-kriteria" class="font-medium text-sky-600 hover:underline" onclick="editData('{{ $dt->id }}')">Edit</button>
