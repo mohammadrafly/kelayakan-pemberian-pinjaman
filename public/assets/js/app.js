@@ -24,7 +24,7 @@ function performLogout() {
 $(document).ready(function() {
     $('#datatable').DataTable();
     $('.js-example-basic-single').select2({
-        placeholder: "Pilih Karyawan",
+        placeholder: "Pilih Data",
         allowClear: true
     });
     $('#errorContainer').hide();

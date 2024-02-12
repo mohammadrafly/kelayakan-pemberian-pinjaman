@@ -23,6 +23,9 @@
                         Nilai
                     </th>
                     <th scope="col" class="px-6 py-3">
+                        Bobot Kriteria
+                    </th>
+                    <th scope="col" class="px-6 py-3">
                         
                     </th>
                 </tr>
@@ -35,6 +38,9 @@
                     </th>
                     <td class="px-6 py-4">
                         {{ $dt->kriteria->nama_kriteria }}
+                    </td>
+                    <td class="px-6 py-4">
+                        {{ $dt->kriteria->bobot_kriteria }}
                     </td>
                     <td class="px-6 py-4">
                         {{ $dt->nilai }}
